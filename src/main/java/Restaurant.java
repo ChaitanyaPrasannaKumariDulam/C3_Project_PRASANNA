@@ -47,6 +47,10 @@ public class Restaurant {
         menu.add(newItem);
     }
 
+    public Item getItemFromMenu(String itemName) {
+        return findItemByName(itemName);
+    }
+
     public void removeFromMenu(String itemName) throws itemNotFoundException {
 
         Item itemToBeRemoved = findItemByName(itemName);

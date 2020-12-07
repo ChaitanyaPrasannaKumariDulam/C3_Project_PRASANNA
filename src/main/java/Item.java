@@ -1,4 +1,5 @@
 public class Item {
+
     private String name;
     private int price;
 
@@ -11,8 +12,15 @@ public class Item {
 
         return name;
     }
-    @Override
-    public String toString(){
-        return  name + ":" + price + "\n";
+    public int getPrice() {
+
+        return price;
     }
+
+    @Override
+    public String toString() {
+        return name + ":" + price + "\n";
+    }
+
+
 }

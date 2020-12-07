@@ -32,7 +32,15 @@ public class RestaurantService {
 
 
     public int getTotalCostOfSelectedItems(String restaurantName, List<String> itemNames) throws restaurantNotFoundException {
-        return 0;
+        //restaurantName passed is found previously, no need to handle restaurnat not found case
+        Restaurant restaurant = findRestaurantByName( restaurantName );
+        int totalCost = 0;
+        for(String itemName : itemNames){
+            //Item always exists in the Menu, no need to handle Item not found case
+            Item item = restaurant.getItemFromMenu( itemName );
+            totalCost += item.getPrice();
+        }
+        return totalCost;
     }
 
     public List<Restaurant> getRestaurants() {
