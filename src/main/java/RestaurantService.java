@@ -30,6 +30,11 @@ public class RestaurantService {
         return restaurantToBeRemoved;
     }
 
+
+    public int getTotalCostOfSelectedItems(String restaurantName, List<String> itemNames) throws restaurantNotFoundException {
+        return 0;
+    }
+
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }

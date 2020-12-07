@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -53,12 +55,22 @@ class RestaurantServiceTest {
         assertEquals( initialNumberOfRestaurants + 1, service.getRestaurants().size() );
     }
 
+    @Test
+    public void get_total_cost_of_selected_items_should_add_up() throws restaurantNotFoundException {
+        addMockRestaurantWithMenu();
+        List<String> selectedItemNames = new ArrayList<>();
+        selectedItemNames.add( "Vegetable lasagne" );
+        selectedItemNames.add( "Baby corn soup" );
+        assertEquals( 369, service.getTotalCostOfSelectedItems( "Amelie's cafe", selectedItemNames ) );
+    }
+
     private void addMockRestaurantWithMenu() {
         LocalTime openingTime = LocalTime.parse( "10:30:00" );
         LocalTime closingTime = LocalTime.parse( "22:00:00" );
         restaurant = service.addRestaurant( "Amelie's cafe", "Chennai", openingTime, closingTime );
         restaurant.addToMenu( "Sweet corn soup", 119 );
         restaurant.addToMenu( "Vegetable lasagne", 269 );
+        restaurant.addToMenu( "Baby corn soup", 100 );
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
